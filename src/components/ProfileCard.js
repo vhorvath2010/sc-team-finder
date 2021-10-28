@@ -1,6 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Card, CardContent, List, ListItem, ListItemText, ListSubheader, Typography } from "@mui/material";
-import { fontSize } from '@mui/system';
 
 const theme = createTheme({
     palette: {
