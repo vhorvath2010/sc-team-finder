@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import { Box } from '@mui/system';
 import './App.css';
 import ProfileCard from './components/ProfileCard';
 
