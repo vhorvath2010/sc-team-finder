@@ -14,10 +14,6 @@ html {
   color: whitesmoke;
 }
 
-.right-desc {
-  color: crimson;
-}
-
 .right-desc p {
   padding: 20px;
   padding-top: 8vh;
@@ -29,9 +25,11 @@ html {
   color: whitesmoke;
 }
 
-.left-desc h1 {
-  padding-right: 25px;
+.left-desc h1, .left-desc p {
+  padding-left: 25px;
+  padding-right: 40px;
 }
+
 
 .left-more h1 {
   color: rgb(226, 199, 77);

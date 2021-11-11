@@ -55,7 +55,7 @@ function App() {
     <div className="App">
       <CssBaseline />
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar style={{ background: 'royalblue', marginBottom: 25 }} position="static">
+        <AppBar style={{ background: 'royalblue', marginBottom: 50 }} position="static">
           <Toolbar>
             <Typography sx={{ flexGrow: 1 }} variant="h4">
               Solutions Challenge Team Finder
@@ -91,7 +91,7 @@ function App() {
         </Grid>
         <Grid item xs={1}></Grid>
       </Grid>
-      <Grid style={{paddingTop: 50}} container spacing={1}>
+      <Grid style={{paddingTop: 80}} container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-desc" xs={10} md={5}>
           <h1>What is the Google Solutions Challenge?</h1>
@@ -102,7 +102,7 @@ function App() {
         </Grid>
         <Grid item xs={1}></Grid>
       </Grid>
-      <Grid style={{paddingTop: 50}} container spacing={1}>
+      <Grid style={{paddingTop: 50, marginBottom: 100}} container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-more" xs={10} md={5}>
           <h1>Who is GT DSC?</h1>
