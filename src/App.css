@@ -1,7 +1,46 @@
-.App {
-  text-align: center;
+html {
+  overflow-x: hidden;
 }
 
-html {
-  background-color: white;
+.left-head h1 {
+  color: green;
+}
+
+.right-head p {
+  background-color: green;
+  padding: 20px;
+  padding-top: 10vh;
+  min-height: 100%;
+  color: whitesmoke;
+}
+
+.right-desc {
+  color: crimson;
+}
+
+.right-desc p {
+  padding: 20px;
+  padding-top: 8vh;
+}
+
+.left-desc {
+  background-color: crimson;
+  min-height: 100%;
+  color: whitesmoke;
+}
+
+.left-desc h1 {
+  padding-right: 25px;
+}
+
+.left-more h1 {
+  color: rgb(226, 199, 77);
+}
+
+.right-more p {
+  background-color: rgb(226, 199, 77);
+  padding: 20px;
+  padding-top: 10vh;
+  min-height: 100%;
+  color: whitesmoke;
 }
