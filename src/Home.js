@@ -1,85 +1,15 @@
-import './App.css'
+import './Home.css'
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import { AppBar, Toolbar, Typography, CssBaseline, Box, IconButton, Button, Menu, MenuItem } from '@mui/material';
-import MoreIcon from '@mui/icons-material/MoreVert';
+import { CssBaseline } from '@mui/material';
+import MenuBar from './components/MenuBar';
 
-function App() {
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const mobileMenuId = 'primary-nav-menu';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <Button variant="text" style={{ color: 'royalblue' }}>
-          Find Teammates
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button variant="text" style={{ color: 'royalblue' }}>
-          Login
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button variant="text" style={{ color: 'royalblue' }}>
-          Create Account
-        </Button>
-      </MenuItem>
-    </Menu>);
+function Home() {
 
   return (
     <div className="App">
       <CssBaseline />
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar style={{ background: 'royalblue', marginBottom: 50 }} position="static">
-          <Toolbar>
-            <Typography sx={{ flexGrow: 1 }} variant="h4">
-              Solutions Challenge Team Finder
-            </Typography>
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" style={{ color: 'white', padding: 20 }}>Find Teammates</Button>
-              <Button variant="text" style={{ color: 'white', padding: 20 }}>Login</Button>
-              <Button variant="text" style={{ color: 'white', padding: 20 }}>Create Account</Button>
-            </Box>
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-haspopup="true"
-                color="inherit"
-                onClick={handleMobileMenuOpen}
-              >
-                <MoreIcon />
-              </IconButton>
-            </Box>
-          </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-      </Box>
+      <MenuBar />
       <Grid container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-head" xs={10} md={5}>
@@ -91,7 +21,7 @@ function App() {
         </Grid>
         <Grid item xs={1}></Grid>
       </Grid>
-      <Grid style={{paddingTop: 80}} container spacing={1}>
+      <Grid style={{ paddingTop: 80 }} container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-desc" xs={10} md={5}>
           <h1>What is the Google Solutions Challenge?</h1>
@@ -102,7 +32,7 @@ function App() {
         </Grid>
         <Grid item xs={1}></Grid>
       </Grid>
-      <Grid style={{paddingTop: 50, marginBottom: 100}} container spacing={1}>
+      <Grid style={{ paddingTop: 50, marginBottom: 100 }} container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-more" xs={10} md={5}>
           <h1>Who is GT DSC?</h1>
@@ -117,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
