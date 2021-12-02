@@ -3,13 +3,16 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import { CssBaseline } from '@mui/material';
 import MenuBar from './components/MenuBar';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Home() {
+
+  const { user } = useAuth0();
 
   return (
     <div className="App">
       <CssBaseline />
-      <MenuBar userLoggedIn={false} />
+      <MenuBar userLoggedIn={user != null} />
       <Grid container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-head" xs={10} md={5}>
