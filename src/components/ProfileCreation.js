@@ -20,6 +20,7 @@ function makeTextField(id, label, defaultValue) {
 }
 
 export default function ProfileCreation(props, handleClose) {
+    console.log(props.user);
     return (
         <Dialog open={props.open} onClose={handleClose}>
             <DialogTitle>Edit Profile</DialogTitle>

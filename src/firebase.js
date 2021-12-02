@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore/lite';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,4 +18,31 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Enter user into the database with defaults
+async function enterUser(user) {
+  const userDoc = doc(db, 'users', user.sub);
+  await setDoc(userDoc, {
+    name: user.name,
+    needsTeam: true,
+    contact: user.email,
+    skills: [],
+    interests: [],
+    needs: []
+  });
+}
+
+// Get user data from auth0 user
+export async function getUserData(user) {
+  const userDoc = doc(db, 'users', user.sub);
+  const userSnap = await getDoc(userDoc);
+
+  // Enter user data if it doesn't exist
+  if (!userSnap.exists()) {
+    enterUser(user);
+  }
+
+  return userSnap.data();
+}

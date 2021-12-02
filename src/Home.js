@@ -4,13 +4,16 @@ import { Grid } from '@material-ui/core';
 import { CssBaseline } from '@mui/material';
 import MenuBar from './components/MenuBar';
 import { useAuth0 } from '@auth0/auth0-react';
+import { getUserData } from './firebase';
 
 function Home() {
 
   const { user } = useAuth0();
 
   if (user != null) {
-    console.log(user);
+    getUserData(user).then((data) => {
+      console.log(data);
+    });
   }
 
   return (
