@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="App">
       <CssBaseline />
-      <MenuBar />
+      <MenuBar userLoggedIn={false} />
       <Grid container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-head" xs={10} md={5}>
