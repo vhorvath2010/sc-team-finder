@@ -9,6 +9,10 @@ function Home() {
 
   const { user } = useAuth0();
 
+  if (user != null) {
+    console.log(user);
+  }
+
   return (
     <div className="App">
       <CssBaseline />

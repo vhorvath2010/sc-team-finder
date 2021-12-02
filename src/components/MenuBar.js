@@ -117,7 +117,7 @@ function MenuBar(props) {
                                 {properButtons}
                                 <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                                     <IconButton
-                                        size="large"
+                                        size="medium"
                                         aria-label="show more"
                                         aria-haspopup="true"
                                         color="inherit"
