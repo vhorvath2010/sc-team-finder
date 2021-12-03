@@ -49,11 +49,13 @@ export async function getUserData(user) {
 
 // Get data of all users
 export async function getAllUserData() {
+  // Query of all users
   const querySnap  = await getDocs(collection(db, 'users'));
   const usersData = [];
+  // Add valid users if they are looking for a team
   querySnap.forEach((doc) => {
     const userData = doc.data();
-    if (userData['name'] != null && userData['contact'] != null) {
+    if (userData['name'] != null && userData['contact'] != null && userData['needsTeam']) {
       usersData.push(userData);
     }
   })
