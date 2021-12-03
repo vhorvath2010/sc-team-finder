@@ -3,11 +3,13 @@ import { Box } from "@mui/system";
 import React from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
-function MenuBar(props) {
+export default function MenuBar(props) {
+    // Mobile menu operations
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const mobileMenuId = 'primary-nav-menu';
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -17,16 +19,28 @@ function MenuBar(props) {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const mobileMenuId = 'primary-nav-menu';
-    let properMobileButtons;
+    // Auth0 authentication methods
     const { loginWithRedirect } = useAuth0();
     const { logout } = useAuth0();
+
+    // Acquire proper buttons
+    let properMobileButtons;
+    let findTeammatesLink = (
+        <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'white' }}>
+            Find Teammates
+        </Link>
+    )
+    let homeLink = (
+        <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+            Solutions Challenge Team Finder
+        </Link>
+    )
     if (!props.userLoggedIn) {
         properMobileButtons = (
             <Box>
                 <MenuItem>
                     <Button variant="text" style={{ color: 'royalblue' }}>
-                        Find Teammates
+                        {findTeammatesLink}
                     </Button>
                 </MenuItem>
                 <MenuItem>
@@ -46,7 +60,7 @@ function MenuBar(props) {
             <Box>
                 <MenuItem>
                     <Button variant="text" style={{ color: 'royalblue' }}>
-                        Find Teammates
+                        {findTeammatesLink}
                     </Button>
                 </MenuItem>
                 <MenuItem>
@@ -68,7 +82,9 @@ function MenuBar(props) {
         properButtons = (
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Button variant="text" style={{ color: 'white', padding: 20 }}>Find Teammates</Button>
+                <Button variant="text" style={{ color: 'white', padding: 20 }}>
+                    {findTeammatesLink}
+                </Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => loginWithRedirect()}>Log in</Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => loginWithRedirect()}>Sign up</Button>
             </Box>
@@ -76,7 +92,9 @@ function MenuBar(props) {
     } else {
         properButtons = (
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Button variant="text" style={{ color: 'white', padding: 20 }}>Find Teammates</Button>
+                <Button variant="text" style={{ color: 'white', padding: 20 }}>
+                    {findTeammatesLink}
+                </Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }}>Profile</Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => logout()}>Logout</Button>
             </Box>
@@ -110,7 +128,7 @@ function MenuBar(props) {
                         <Grid container alignItems="center">
                             <Grid item sm={6} lg={8}>
                                 <Typography variant="h4">
-                                    Solutions Challenge Team Finder
+                                    {homeLink}
                                 </Typography>
                             </Grid>
                             <Grid item sm={6} lg={4}>
@@ -135,5 +153,3 @@ function MenuBar(props) {
         </div>
     )
 }
-
-export default MenuBar;

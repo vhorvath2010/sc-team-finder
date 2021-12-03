@@ -6,7 +6,7 @@ import MenuBar from './components/MenuBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import { getUserData } from './firebase';
 
-function Home() {
+export default function Home() {
 
   const { user } = useAuth0();
 
@@ -56,5 +56,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
