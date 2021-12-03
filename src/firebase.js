@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore/lite';
+import { getFirestore, doc, getDoc, setDoc, getDocs, collection } from 'firebase/firestore/lite';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -45,4 +45,14 @@ export async function getUserData(user) {
   }
 
   return userSnap.data();
+}
+
+// Get data of all users
+export async function getAllUserData() {
+  const querySnap  = await getDocs(collection(db, 'users'));
+  const userData = [];
+  querySnap.forEach((doc) => {
+    userData.append(doc.data());
+  })
+  return userData;
 }
