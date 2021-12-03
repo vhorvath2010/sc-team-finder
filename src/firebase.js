@@ -50,9 +50,12 @@ export async function getUserData(user) {
 // Get data of all users
 export async function getAllUserData() {
   const querySnap  = await getDocs(collection(db, 'users'));
-  const userData = [];
+  const usersData = [];
   querySnap.forEach((doc) => {
-    userData.append(doc.data());
+    const userData = doc.data();
+    if (userData['name'] != null && userData['contact'] != null) {
+      usersData.push(userData);
+    }
   })
-  return userData;
+  return usersData;
 }
