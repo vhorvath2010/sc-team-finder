@@ -8,7 +8,7 @@ export default function SearchResults(props) {
             <Grid container spacing={2} justifyContent="center" alignItems="center">
                 {props.users.map(user => {
                     return (
-                        <Grid item xs={3}>
+                        <Grid item xs={12} sm={6} md={4} lg={3}>
                             <ProfileCard user={user} />
                         </Grid>
                     );
