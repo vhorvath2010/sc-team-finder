@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Search from './Search';
+import Search from './Search.js'
 
 ReactDOM.render(
   <Auth0Provider

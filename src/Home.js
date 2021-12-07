@@ -8,18 +8,10 @@ import { getUserData } from './firebase';
 
 export default function Home() {
 
-  const { user } = useAuth0();
-
-  if (user != null) {
-    getUserData(user).then((data) => {
-      console.log(data);
-    });
-  }
-
   return (
     <div className="App">
       <CssBaseline />
-      <MenuBar userLoggedIn={user != null} />
+      <MenuBar />
       <Grid container spacing={1}>
         <Grid item xs={1}></Grid>
         <Grid item className="left-head" xs={10} md={5}>

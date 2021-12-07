@@ -1,9 +1,10 @@
-import { Dialog, DialogTitle, Button, Switch } from "@material-ui/core";
+import { Dialog, DialogTitle, Button, Switch, Grid, FormGroup } from "@material-ui/core";
 import TextField from '@mui/material/TextField';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 function makeTextField(id, label, defaultValue) {
     return (
@@ -20,7 +21,14 @@ function makeTextField(id, label, defaultValue) {
 }
 
 export default function ProfileCreation(props, handleClose) {
-    console.log(props.user);
+    if (props.user == null) {
+        return (
+            <Dialog>
+                <DialogTitle>User not found!</DialogTitle>
+            </Dialog>
+        )
+    }
+    const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#']
     return (
         <Dialog open={props.open} onClose={handleClose}>
             <DialogTitle>Edit Profile</DialogTitle>
@@ -30,11 +38,15 @@ export default function ProfileCreation(props, handleClose) {
                 </DialogContentText>
                 {makeTextField('name', 'Name')}
                 {makeTextField('contact', 'Contact Info')}
-                <FormControlLabel control={<Switch defaultChecked={true} />} label="Looking for a team?" />
+                <FormControlLabel control={<Switch checked={props.user['needsTeam']} />} label="Looking for a team?" />
+                <FormGroup row>
+                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label1" />
+                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label2" />
+                </FormGroup>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Subscribe</Button>
+                <Button onClick={handleClose}>Update Profile</Button>
             </DialogActions>
         </Dialog>
     )

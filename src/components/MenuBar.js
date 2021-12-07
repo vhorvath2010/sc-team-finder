@@ -4,8 +4,11 @@ import React from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import ProfileCreation from "./ProfileCreation";
 
 export default function MenuBar(props) {
+    const { user } = useAuth0();
+
     // Mobile menu operations
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -35,7 +38,7 @@ export default function MenuBar(props) {
             Solutions Challenge Team Finder
         </Link>
     )
-    if (!props.userLoggedIn) {
+    if (user == null) {
         properMobileButtons = (
             <Box>
                 <MenuItem>
@@ -78,7 +81,7 @@ export default function MenuBar(props) {
     }
 
     let properButtons;
-    if (!props.userLoggedIn) {
+    if (user == null) {
         properButtons = (
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -122,6 +125,7 @@ export default function MenuBar(props) {
 
     return (
         <div>
+            <ProfileCreation open={true} user={user} />
             <Box>
                 <AppBar style={{ background: 'royalblue', marginBottom: 50 }} position="static">
                     <Toolbar>
