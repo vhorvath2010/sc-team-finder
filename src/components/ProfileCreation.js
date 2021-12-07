@@ -29,6 +29,7 @@ export default function ProfileCreation(props, handleClose) {
         )
     }
     const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#']
+    const interests = ['Sustainability']
     return (
         <Dialog open={props.open} onClose={handleClose}>
             <DialogTitle>Edit Profile</DialogTitle>
@@ -36,13 +37,27 @@ export default function ProfileCreation(props, handleClose) {
                 <DialogContentText>
                     Enter your information below to help us find the perfect teammates for your group!
                 </DialogContentText>
+                <DialogTitle>Personal Information</DialogTitle>
                 {makeTextField('name', 'Name')}
                 {makeTextField('contact', 'Contact Info')}
                 <FormControlLabel control={<Switch checked={props.user['needsTeam']} />} label="Looking for a team?" />
+                <DialogTitle>Skills</DialogTitle>
                 <FormGroup row>
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label1" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Label2" />
+                    {skills.map(skill => {
+                        return (<FormControlLabel control={<Checkbox defaultChecked />} label={skill} id={skill} />)
+                    })}
+                </FormGroup>
+                <DialogTitle>Interests</DialogTitle>
+                <FormGroup row>
+                    {interests.map(interest => {
+                        return (<FormControlLabel control={<Checkbox defaultChecked />} label={interest} id={interest} />)
+                    })}
+                </FormGroup>
+                <DialogTitle>Looking for People with: </DialogTitle>
+                <FormGroup row>
+                    {skills.map(skill => {
+                        return (<FormControlLabel control={<Checkbox defaultChecked />} label={skill} id={skill} />)
+                    })}
                 </FormGroup>
             </DialogContent>
             <DialogActions>
