@@ -39,8 +39,8 @@ export default class ProfileCreation extends React.Component {
     }
 
     componentDidUpdate(nextProps) {
-        if (this.props !== nextProps) {
-            getUserData(this.props.user).then(data => {
+        if (this.props !== nextProps && nextProps.user != null) {
+            getUserData(nextProps.user).then(data => {
                 this.updateStateWithUserData(data);
             });
         }
@@ -133,7 +133,7 @@ export default class ProfileCreation extends React.Component {
                                     label={interest}
                                     id={"interest." + interest}
                                     onChange={(event) => {
-                                        if (!event.target.checked) {
+                                        if (event.target.checked) {
                                             this.state.interests.push(interest)
                                         } else {
                                             const index = this.state.interests.indexOf(interest)
@@ -171,7 +171,7 @@ export default class ProfileCreation extends React.Component {
                     <Button onClick={
                         () => {
                             console.log('update');
-                            this.props.setClosed()
+                            this.props.setClosed();
                             enterUserData(this.props.user, {
                                 name: this.state.name,
                                 needsTeam: this.state.needsTeam,

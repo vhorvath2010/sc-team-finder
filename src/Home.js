@@ -10,7 +10,7 @@ export default function Home() {
     <div className="App">
       <CssBaseline />
       <MenuBar />
-      <Grid container spacing={1}>
+      <Grid container spacing={1} justifyContent="center" alignContent="center">
         <Grid item xs={0} md={1}></Grid>
         <Grid item className="left-head" xs={12} md={5}>
           <h1>Find Solutions Challenge Teammates!</h1>
