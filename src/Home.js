@@ -3,8 +3,6 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import { CssBaseline } from '@mui/material';
 import MenuBar from './components/MenuBar';
-import { useAuth0 } from '@auth0/auth0-react';
-import { getUserData } from './firebase';
 
 export default function Home() {
 

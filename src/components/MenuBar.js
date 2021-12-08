@@ -9,6 +9,23 @@ import ProfileCreation from "./ProfileCreation";
 export default function MenuBar(props) {
     const { user } = useAuth0();
 
+    // Profile
+    const [editingProfile, setEditingProfile] = React.useState(false);
+    const handleProfileEditorOpen = () => {
+        setEditingProfile(true);
+    }
+    const handleProfileEditorClose = () => {
+        setEditingProfile(false);
+    }
+
+    // Show user creation if needed
+    const profileCreation = (
+        <ProfileCreation
+            open={editingProfile && user != null}
+            user={user}
+            setClosed={handleProfileEditorClose} />
+    );
+
     // Mobile menu operations
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -67,7 +84,7 @@ export default function MenuBar(props) {
                     </Button>
                 </MenuItem>
                 <MenuItem>
-                    <Button variant="text" style={{ color: 'royalblue' }}>
+                    <Button variant="text" style={{ color: 'royalblue' }} onClick={handleProfileEditorOpen}>
                         Profile
                     </Button>
                 </MenuItem>
@@ -98,7 +115,7 @@ export default function MenuBar(props) {
                 <Button variant="text" style={{ color: 'white', padding: 20 }}>
                     {findTeammatesLink}
                 </Button>
-                <Button variant="text" style={{ color: 'white', padding: 20 }}>Profile</Button>
+                <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={handleProfileEditorOpen}>Profile</Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => logout()}>Logout</Button>
             </Box>
         )
@@ -125,7 +142,7 @@ export default function MenuBar(props) {
 
     return (
         <div>
-            <ProfileCreation open={true} user={user} />
+            {profileCreation}
             <Box>
                 <AppBar style={{ background: 'royalblue', marginBottom: 50 }} position="static">
                     <Toolbar>
