@@ -21,36 +21,54 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// User data map to avoid duplicate calls
+const userDataMap = new Map();
+
+// Enter user into database with data
+export async function enterUserData(user, userData) {
+  const userDoc = doc(db, 'users', user.sub);
+  await setDoc(userDoc, userData);
+  userDataMap.set(user.sub, userData);
+}
+
 // Enter user into the database with defaults
 async function enterUser(user) {
   const userDoc = doc(db, 'users', user.sub);
-  await setDoc(userDoc, {
+  const userData = {
     name: user.name,
     needsTeam: true,
     contact: user.email,
     skills: [],
     interests: [],
     needs: []
-  });
+  };
+  await setDoc(userDoc, userData);
+  userDataMap.set(user.sub, userData);
 }
 
 // Get user data from auth0 user
 export async function getUserData(user) {
-  const userDoc = doc(db, 'users', user.sub);
-  const userSnap = await getDoc(userDoc);
+  // Try data from dictionary first
+  if (userDataMap.has(user.sub)) {
+    return userDataMap.get(user.sub);
+  } else {
+    const id = user.sub
+    const userDoc = doc(db, 'users', id);
+    const userSnap = await getDoc(userDoc);
 
-  // Enter user data if it doesn't exist
-  if (!userSnap.exists()) {
-    enterUser(user);
+    // Enter user data if it doesn't exist
+    if (!userSnap.exists()) {
+      enterUser(user);
+    }
+    userDataMap.set(id, userSnap.data());
+    return userSnap.data();
   }
-
-  return userSnap.data();
 }
 
 // Get data of all users
 export async function getAllUserData() {
   // Query of all users
-  const querySnap  = await getDocs(collection(db, 'users'));
+  const querySnap = await getDocs(collection(db, 'users'));
   const usersData = [];
   // Add valid users if they are looking for a team
   querySnap.forEach((doc) => {

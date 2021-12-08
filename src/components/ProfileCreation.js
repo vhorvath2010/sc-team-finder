@@ -5,23 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { getUserData } from './firebase';
+import { getUserData, enterUserData } from './firebase';
 import React from "react";
-
-function makeTextField(id, label, defaultValue) {
-    return (
-        <TextField
-            autoFocus
-            margin="dense"
-            id={id}
-            label={label}
-            type="text"
-            defaultValue={defaultValue}
-            fullWidth
-            variant="standard"
-        />
-    )
-}
 
 export default class ProfileCreation extends React.Component {
 
@@ -32,23 +17,31 @@ export default class ProfileCreation extends React.Component {
         }
     }
 
+    updateStateWithUserData(userData) {
+        this.setState({
+            userData: userData,
+            contact: userData['contact'],
+            name: userData['name'],
+            interests: [...userData['interests']],
+            needs: [...userData['needs']],
+            needsTeam: userData['needsTeam'],
+            skills: [...userData['skills']],
+        });
+        console.log(this.state);
+    }
+
     componentDidMount() {
         if (this.props.user != null) {
             getUserData(this.props.user).then(data => {
-                this.setState({
-                    userData: data,
-                });
+                this.updateStateWithUserData(data);
             });
         }
     }
 
     componentDidUpdate(nextProps) {
         if (this.props !== nextProps) {
-            console.log("test");
             getUserData(this.props.user).then(data => {
-                this.setState({
-                    userData: data,
-                });
+                this.updateStateWithUserData(data);
             });
         }
     }
@@ -71,30 +64,123 @@ export default class ProfileCreation extends React.Component {
                         Enter your information below to help us find the perfect teammates for your group!
                     </DialogContentText>
                     <DialogTitle>Personal Information</DialogTitle>
-                    {makeTextField('name', 'Name', this.state.userData['name'])}
-                    {makeTextField('contact', 'Contact Info', this.state.userData['contact'])}
-                    <FormControlLabel control={<Switch checked={this.state.userData['needsTeam']} />} label="Looking for a team?" />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id={'name'}
+                        label={'Name'}
+                        type="text"
+                        defaultValue={this.state.name}
+                        fullWidth
+                        onChange={(event) => {
+                            this.setState({
+                                name: event.target.value,
+                            })
+                        }}
+                        variant="standard"
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id={'contact'}
+                        label={'Contact Info'}
+                        type="text"
+                        defaultValue={this.state.contact}
+                        fullWidth
+                        onChange={(event) => {
+                            this.setState({
+                                contact: event.target.value,
+                            })
+                        }}
+                        variant="standard"
+                    />
+                    <FormControlLabel control={<Switch
+                        checked={this.state.needsTeam} />}
+                        label="Looking for a team?"
+                        onChange={(event) => {
+                            this.setState({
+                                needsTeam: event.target.checked,
+                            })
+                        }}
+                    />
                     <DialogTitle>Skills</DialogTitle>
                     <FormGroup row>
                         {skills.map(skill => {
-                            return (<FormControlLabel control={<Checkbox defaultChecked={this.state.userData['skills'].includes(skill)} />} label={skill} id={"skill." + skill} />)
+                            return (
+                                <FormControlLabel
+                                    control={<Checkbox defaultChecked={this.state.skills.includes(skill)} />}
+                                    label={skill}
+                                    id={"skill." + skill}
+                                    onChange={(event) => {
+                                        if (event.target.checked) {
+                                            this.state.skills.push(skill);
+                                        } else {
+                                            const index = this.state.skills.indexOf(skill)
+                                            if (index > -1) {
+                                                this.state.skills.splice(index, 1);
+                                            }
+                                        }
+                                    }}
+                                />)
                         })}
                     </FormGroup>
                     <DialogTitle>Interests</DialogTitle>
                     <FormGroup row>
                         {interests.map(interest => {
-                            return (<FormControlLabel control={<Checkbox defaultChecked={this.state.userData['interests'].includes(interest)} />} label={interest} id={"interest." + interest} />)
+                            return (
+                                <FormControlLabel
+                                    control={<Checkbox defaultChecked={this.state.interests.includes(interest)} />}
+                                    label={interest}
+                                    id={"interest." + interest}
+                                    onChange={(event) => {
+                                        if (!event.target.checked) {
+                                            this.state.interests.push(interest)
+                                        } else {
+                                            const index = this.state.interests.indexOf(interest)
+                                            if (index > -1) {
+                                                this.state.interests.splice(index, 1)
+                                            }
+                                        }
+                                    }}
+                                />)
                         })}
                     </FormGroup>
                     <DialogTitle>Looking for People with: </DialogTitle>
                     <FormGroup row>
                         {skills.map(skill => {
-                            return (<FormControlLabel control={<Checkbox defaultChecked={this.state.userData['needs'].includes(skill)} />} label={skill} id={"need." + skill} />)
+                            return (
+                                <FormControlLabel
+                                    control={<Checkbox defaultChecked={this.state.needs.includes(skill)} />}
+                                    label={skill}
+                                    id={"need." + skill}
+                                    onChange={(event) => {
+                                        if (event.target.checked) {
+                                            this.state.needs.push(skill)
+                                        } else {
+                                            const index = this.state.needs.indexOf(skill)
+                                            if (index > -1) {
+                                                this.state.needs.splice(index, 1)
+                                            }
+                                        }
+                                    }}
+                                />)
                         })}
                     </FormGroup>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.props.setClosed}>Update Profile</Button>
+                    <Button onClick={
+                        () => {
+                            console.log('update');
+                            this.props.setClosed()
+                            enterUserData(this.props.user, {
+                                name: this.state.name,
+                                needsTeam: this.state.needsTeam,
+                                contact: this.state.contact,
+                                skills: this.state.skills,
+                                interests: this.state.interests,
+                                needs: this.state.needs,
+                            });
+                        }}>Update Profile</Button>
                 </DialogActions>
             </Dialog>
         )

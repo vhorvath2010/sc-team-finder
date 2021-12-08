@@ -25,7 +25,7 @@ html {
   color: whitesmoke;
 }
 
-.left-desc h1, .left-desc p {
+h1, p {
   padding-left: 25px;
   padding-right: 40px;
 }
