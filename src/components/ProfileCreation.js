@@ -42,8 +42,9 @@ export default class ProfileCreation extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        if (this.props.user != null) {
+    componentDidUpdate(nextProps) {
+        if (this.props !== nextProps) {
+            console.log("test");
             getUserData(this.props.user).then(data => {
                 this.setState({
                     userData: data,
@@ -53,7 +54,6 @@ export default class ProfileCreation extends React.Component {
     }
 
     render() {
-        console.log(this.props.user);
         if (this.props.user == null || this.state.userData == null) {
             return (
                 <Dialog open={this.props.open} onClose={this.props.setClosed}>
