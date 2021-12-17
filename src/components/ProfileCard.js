@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Card, CardContent, List, ListItem, ListItemText, ListSubheader, Typography } from "@mui/material";
+import { Card, CardContent, List, ListSubheader, Typography } from "@mui/material";
+import { ListItemText } from '@material-ui/core';
 
 const theme = createTheme({
     palette: {
@@ -8,14 +9,14 @@ const theme = createTheme({
 });
 
 function CardList(props) {
+    let items = props.items[0];
+    for (let i = 1; i < props.items.length; ++i) {
+        items += ", " + props.items[i];
+    }
     return (
         <List sx={{ color: "black" }}>
-            <ListSubheader sx={{ color: "black", backgroundColor: "whitesmoke", fontSize: 20 }}>{props.title}</ListSubheader>
-            {props.items.map(item => (
-                <ListItem>
-                    <ListItemText primary={item}></ListItemText>
-                </ListItem>
-            ))}
+            <ListSubheader key="header" sx={{ color: "black", backgroundColor: "whitesmoke", fontSize: 20 }}>{props.title}</ListSubheader>
+            <ListItemText key="items">{items}</ListItemText>
         </List>
     );
 }

@@ -27,7 +27,6 @@ export default class ProfileCreation extends React.Component {
             needsTeam: userData['needsTeam'],
             skills: [...userData['skills']],
         });
-        console.log(this.state);
     }
 
     componentDidMount() {
@@ -108,7 +107,8 @@ export default class ProfileCreation extends React.Component {
                         {skills.map(skill => {
                             return (
                                 <FormControlLabel
-                                    control={<Checkbox defaultChecked={this.state.skills.includes(skill)} />}
+                                    control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
+                                        defaultChecked={this.state.skills.includes(skill)} />}
                                     label={skill}
                                     id={"skill." + skill}
                                     onChange={(event) => {
@@ -129,7 +129,8 @@ export default class ProfileCreation extends React.Component {
                         {interests.map(interest => {
                             return (
                                 <FormControlLabel
-                                    control={<Checkbox defaultChecked={this.state.interests.includes(interest)} />}
+                                    control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
+                                        defaultChecked={this.state.interests.includes(interest)} />}
                                     label={interest}
                                     id={"interest." + interest}
                                     onChange={(event) => {
@@ -150,7 +151,8 @@ export default class ProfileCreation extends React.Component {
                         {skills.map(skill => {
                             return (
                                 <FormControlLabel
-                                    control={<Checkbox defaultChecked={this.state.needs.includes(skill)} />}
+                                    control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
+                                        defaultChecked={this.state.needs.includes(skill)} />}
                                     label={skill}
                                     id={"need." + skill}
                                     onChange={(event) => {
@@ -170,7 +172,6 @@ export default class ProfileCreation extends React.Component {
                 <DialogActions>
                     <Button onClick={
                         () => {
-                            console.log('update');
                             this.props.setClosed();
                             enterUserData(this.props.user, {
                                 name: this.state.name,
