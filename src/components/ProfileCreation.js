@@ -31,22 +31,26 @@ export default class ProfileCreation extends React.Component {
 
     componentDidMount() {
         if (this.props.user != null) {
+            this.setState({loading: true})
             getUserData(this.props.user).then(data => {
                 this.updateStateWithUserData(data);
+                this.setState({loading: false})
             });
         }
     }
 
     componentDidUpdate(nextProps) {
         if (this.props !== nextProps && nextProps.user != null) {
+            this.setState({loading: true})
             getUserData(nextProps.user).then(data => {
                 this.updateStateWithUserData(data);
+                this.setState({loading: false})
             });
         }
     }
 
     render() {
-        if (this.props.user == null || this.state.userData == null) {
+        if (this.props.user == null || this.state.userData == null || this.state.loading) {
             return (
                 <Dialog open={this.props.open} onClose={this.props.setClosed}>
                     <DialogTitle>Loading user data...</DialogTitle>
