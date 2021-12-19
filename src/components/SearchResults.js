@@ -4,6 +4,9 @@ import ProfileCard from "./ProfileCard";
 
 export default function SearchResults(props) {
     if (props.users != null) {
+        if (props.users.length === 0) {
+            return (<Typography variant="h4" align="center">No profiles to view! Sign in and be the first to create one!</Typography>)
+        }
         return (
             <Box style={{ paddingLeft: 20, paddingRight: 20 }}>
                 <Grid container spacing={2} justifyContent="center" alignItems="center">
