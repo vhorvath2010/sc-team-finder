@@ -23,6 +23,7 @@ const db = getFirestore(app);
 
 // User data map to avoid duplicate calls
 const userDataMap = new Map();
+const newUsers = [];
 
 // Enter user into database with data
 export async function enterUserData(user, userData) {
@@ -33,6 +34,7 @@ export async function enterUserData(user, userData) {
 
 // Enter user into the database with defaults
 async function enterUser(user) {
+  newUsers.push(user);
   const userDoc = doc(db, 'users', user.sub);
   const userData = {
     name: user.name,
@@ -42,24 +44,24 @@ async function enterUser(user) {
     interests: [],
     needs: []
   };
-  await setDoc(userDoc, userData);
   userDataMap.set(user.sub, userData);
+  await setDoc(userDoc, userData);
 }
 
 // Get user data from auth0 user
 export async function getUserData(user) {
+  // Setup doc query
+  const id = user.sub
+  const userDoc = doc(db, 'users', id);
+  const userSnap = await getDoc(userDoc);
+  // Enter user data if it doesn't exist
+  if (!userSnap.exists()) {
+    enterUser(user);
+  }
   // Try data from dictionary first
   if (userDataMap.has(user.sub)) {
     return userDataMap.get(user.sub);
   } else {
-    const id = user.sub
-    const userDoc = doc(db, 'users', id);
-    const userSnap = await getDoc(userDoc);
-
-    // Enter user data if it doesn't exist
-    if (!userSnap.exists()) {
-      enterUser(user);
-    }
     userDataMap.set(id, userSnap.data());
     return userSnap.data();
   }
@@ -78,4 +80,15 @@ export async function getAllUserData() {
     }
   })
   return usersData;
+}
+
+// Remove from new users
+export function removeIfNewUser(user) {
+  const i = newUsers.indexOf(user);
+  if (i !== -1) {
+    newUsers.splice(i, 1);
+    return true
+  } else {
+    return false;
+  }
 }

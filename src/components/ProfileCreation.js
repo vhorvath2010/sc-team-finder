@@ -31,20 +31,21 @@ export default class ProfileCreation extends React.Component {
 
     componentDidMount() {
         if (this.props.user != null) {
-            this.setState({loading: true})
+            this.setState({ loading: true })
             getUserData(this.props.user).then(data => {
+                console.log(data);
                 this.updateStateWithUserData(data);
-                this.setState({loading: false})
+                this.setState({ loading: false })
             });
         }
     }
 
     componentDidUpdate(nextProps) {
         if (this.props !== nextProps && nextProps.user != null) {
-            this.setState({loading: true})
+            this.setState({ loading: true })
             getUserData(nextProps.user).then(data => {
                 this.updateStateWithUserData(data);
-                this.setState({loading: false})
+                this.setState({ loading: false })
             });
         }
     }
@@ -114,6 +115,7 @@ export default class ProfileCreation extends React.Component {
                                     control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
                                         defaultChecked={this.state.skills.includes(skill)} />}
                                     label={skill}
+                                    key={skill}
                                     id={"skill." + skill}
                                     onChange={(event) => {
                                         if (event.target.checked) {
@@ -136,6 +138,7 @@ export default class ProfileCreation extends React.Component {
                                     control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
                                         defaultChecked={this.state.interests.includes(interest)} />}
                                     label={interest}
+                                    key={interest}
                                     id={"interest." + interest}
                                     onChange={(event) => {
                                         if (event.target.checked) {
@@ -158,6 +161,7 @@ export default class ProfileCreation extends React.Component {
                                     control={<Checkbox inputProps={{ 'aria-label': 'controlled' }}
                                         defaultChecked={this.state.needs.includes(skill)} />}
                                     label={skill}
+                                    key={skill}
                                     id={"need." + skill}
                                     onChange={(event) => {
                                         if (event.target.checked) {

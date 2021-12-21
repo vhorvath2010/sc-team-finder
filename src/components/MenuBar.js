@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import ProfileCreation from "./ProfileCreation";
+import { removeIfNewUser } from "./firebase";
 
 export default function MenuBar(props) {
     const { user } = useAuth0();
@@ -16,6 +17,11 @@ export default function MenuBar(props) {
     }
     const handleProfileEditorClose = () => {
         setEditingProfile(false);
+    }
+
+    // Open profile if user logged in for first time
+    if (removeIfNewUser(user)) {
+        handleProfileEditorOpen();
     }
 
     // Show user creation if needed
