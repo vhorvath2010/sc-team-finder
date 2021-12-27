@@ -3,6 +3,9 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import { CssBaseline } from '@mui/material';
 import MenuBar from './components/MenuBar';
+import gdsc_img from './imgs/gdsc_2021_header_1920.png';
+import sdg_img from './imgs/sdg_square_image_960.png';
+import dsc_img from './imgs/gdsc_hero.svg';
 
 export default function Home() {
 
@@ -17,7 +20,7 @@ export default function Home() {
           <p>Welcome to the Solutions Challenge Team Finder! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
         </Grid>
         <Grid item className="right-head" xs={12} md={5}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
+          <img src={gdsc_img} alt="evironmental artwork"></img>
         </Grid>
         <Grid item xs={false} md={1}></Grid>
       </Grid>
@@ -28,7 +31,7 @@ export default function Home() {
           <p>Explain this general idea + this year's focus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
         </Grid>
         <Grid item className="right-desc" xs={12} md={5}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
+          <img src={sdg_img} alt="UN Sustainable Development Goals"></img>
         </Grid>
         <Grid item xs={false} md={1}></Grid>
       </Grid>
@@ -39,7 +42,7 @@ export default function Home() {
           <p>Explain who we are as a club (beyond the Google Solutions Challenge and like to ways to get involved). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
         </Grid>
         <Grid item className="right-more" xs={12} md={5}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
+          <img src={dsc_img} alt="Students working on a laptop"></img>
         </Grid>
         <Grid item xs={false} md={1}></Grid>
       </Grid>
