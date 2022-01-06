@@ -33,7 +33,7 @@ export default function SearchResults(props) {
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <h3>Interests</h3>
-                            <List dense>
+                            <List dense>a
                                 {interests.map(interest => {
                                     return (
                                         <FormControlLabel
