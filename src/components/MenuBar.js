@@ -150,7 +150,7 @@ export default function MenuBar(props) {
         <div>
             {profileCreation}
             <Box>
-                <AppBar style={{ background: 'rgb(219, 68, 55)', marginBottom: 50 }} position="static">
+                <AppBar style={{ background: 'rgb(66, 133, 244)', marginBottom: 50 }} position="static">
                     <Toolbar>
                         <Grid container alignItems="center">
                             <Grid item sm={6} lg={8}>
