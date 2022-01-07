@@ -15,6 +15,9 @@ function removeFromArray(item, array) {
 
 export default function SearchResults(props) {
     const [skillFilters, setSkillFilters] = useState([]);
+    const [interestFilters, setInterestFilters] = useState([]);
+    const [needFilters, setNeedFilters] = useState([]);
+
     if (props.users != null) {
         if (props.users.length === 0) {
             return (<Typography variant="h4" align="center">No profiles to view! Sign in and be the first to create one!</Typography>)
@@ -36,13 +39,13 @@ export default function SearchResults(props) {
                                         key={skill}
                                         id={"filter.skill." + skill}
                                         onChange={event => {
-                                            const newSkillFilters = [...skillFilters];
+                                            const newFilters = [...skillFilters];
                                             if (event.target.checked) {
-                                                newSkillFilters.push(skill);
+                                                newFilters.push(skill);
                                             } else {
-                                                removeFromArray(skill, newSkillFilters)
+                                                removeFromArray(skill, newFilters)
                                             }
-                                            setSkillFilters(newSkillFilters);
+                                            setSkillFilters(newFilters);
                                         }}
                                     />)
                             })}
@@ -58,6 +61,15 @@ export default function SearchResults(props) {
                                         label={interest}
                                         key={interest}
                                         id={"filter.interest." + interest}
+                                        onChange={event => {
+                                            const newFilters = [...interestFilters];
+                                            if (event.target.checked) {
+                                                newFilters.push(interest);
+                                            } else {
+                                                removeFromArray(interest, newFilters)
+                                            }
+                                            setInterestFilters(newFilters);
+                                        }}
                                     />)
                             })}
                         </List>
@@ -72,12 +84,25 @@ export default function SearchResults(props) {
                                         label={skill}
                                         key={skill}
                                         id={"filter.need." + skill}
+                                        onChange={event => {
+                                            const newFilters = [...needFilters];
+                                            if (event.target.checked) {
+                                                newFilters.push(skill);
+                                            } else {
+                                                removeFromArray(skill, newFilters)
+                                            }
+                                            setNeedFilters(newFilters);
+                                        }}
                                     />)
                             })}
                         </List>
                     </Grid>
                 </Grid>
-                <FilteredSearchResults users={props.users} skillFilters={skillFilters} />
+                <FilteredSearchResults
+                    users={props.users}
+                    skillFilters={skillFilters}
+                    interestFilters={interestFilters}
+                    needFilters={needFilters} />
             </Box>
         );
     } else {

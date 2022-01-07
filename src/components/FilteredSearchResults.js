@@ -18,6 +18,19 @@ function getFilteredUsers(users, skillFilters, interestFilters, needsFilters) {
                 removeFromArray(user, filteredUsers);
             }
         })
+        const userInterests = user['interests'];
+        interestFilters.forEach(filterInterest => {
+            if (userInterests.indexOf(filterInterest) === -1) {
+                removeFromArray(user, filteredUsers);
+            }
+        })
+        // TODO: fix promise error?
+        const userNeeds = user['needs'];
+        needsFilters.forEach(filterNeed => {
+            if (userNeeds.indexOf(filterNeed) === -1) {
+                removeFromArray(user, filteredUsers);
+            }
+        })
     })
     return filteredUsers;
 }
@@ -25,7 +38,7 @@ function getFilteredUsers(users, skillFilters, interestFilters, needsFilters) {
 export default function FilteredSearchResults(props) {
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
-            {getFilteredUsers(props.users, props.skillFilters).map(user => {
+            {getFilteredUsers(props.users, props.skillFilters, props.interestFilters, props.needsFilters).map(user => {
                 return (
                     <Grid item key={user['contact']} xs={12} sm={6} md={4} lg={3}>
                         <ProfileCard user={user} />
