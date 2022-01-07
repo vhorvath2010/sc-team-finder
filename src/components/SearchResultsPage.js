@@ -24,7 +24,6 @@ export default function SearchResults(props) {
                 <Grid container item spacing={0} key="filters" justifyContent="center" alignItems="center">
                     <Grid item xs={12}>
                         <h2>Filters</h2>
-                        <h2>{skillFilters}</h2>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <h3>Skills</h3>
@@ -37,12 +36,13 @@ export default function SearchResults(props) {
                                         key={skill}
                                         id={"filter.skill." + skill}
                                         onChange={event => {
+                                            const newSkillFilters = [...skillFilters];
                                             if (event.target.checked) {
-                                                skillFilters.push(skill);
+                                                newSkillFilters.push(skill);
                                             } else {
-                                                removeFromArray(skill, skillFilters)
+                                                removeFromArray(skill, newSkillFilters)
                                             }
-                                            setSkillFilters(skillFilters);
+                                            setSkillFilters(newSkillFilters);
                                         }}
                                     />)
                             })}
