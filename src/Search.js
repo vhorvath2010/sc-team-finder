@@ -1,7 +1,7 @@
 import React from "react";
 import { CssBaseline } from "@material-ui/core";
 import MenuBar from './components/MenuBar'
-import SearchResults from "./components/SearchResults";
+import SearchResultsPage from "./components/SearchResultsPage";
 import { getAllUserData } from './components/firebase';
 
 export default class Search extends React.Component {
@@ -24,7 +24,7 @@ export default class Search extends React.Component {
             <div className="FindTeammates">
                 <CssBaseline />
                 <MenuBar />
-                <SearchResults users={this.state.users} />
+                <SearchResultsPage users={this.state.users} />
             </div>
         )
     }
