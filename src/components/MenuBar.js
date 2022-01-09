@@ -1,7 +1,7 @@
 import { AppBar, Button, Grid, IconButton, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
 import { Box } from "@mui/system";
 import React from "react";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import ProfileCreation from "./ProfileCreation";
@@ -51,11 +51,6 @@ export default function MenuBar(props) {
 
     // Acquire proper buttons
     let properMobileButtons;
-    let findTeammatesLink = (
-        <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'white' }}>
-            Find Teammates
-        </Link>
-    )
     let homeLink = (
         <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
             Solutions Challenge Team Finder
@@ -65,8 +60,10 @@ export default function MenuBar(props) {
         properMobileButtons = (
             <Box>
                 <MenuItem>
-                    <Button variant="text" style={{ color: 'royalblue' }}>
-                        {findTeammatesLink}
+                    <Button variant="text" style={{ color: 'royalblue' }} onClick={handleProfileEditorOpen}>
+                        <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'royalblue' }}>
+                            Find Teammates
+                        </Link>
                     </Button>
                 </MenuItem>
                 <MenuItem>
@@ -85,8 +82,10 @@ export default function MenuBar(props) {
         properMobileButtons = (
             <Box>
                 <MenuItem>
-                    <Button variant="text" style={{ color: 'royalblue' }}>
-                        {findTeammatesLink}
+                    <Button variant="text" style={{ color: 'royalblue' }} onClick={handleProfileEditorOpen}>
+                        <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'royalblue' }}>
+                            Find Teammates
+                        </Link>
                     </Button>
                 </MenuItem>
                 <MenuItem>
@@ -106,10 +105,11 @@ export default function MenuBar(props) {
     let properButtons;
     if (user == null) {
         properButtons = (
-
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Button variant="text" style={{ color: 'white', padding: 20 }}>
-                    {findTeammatesLink}
+                    <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'white' }}>
+                        Find Teammates
+                    </Link>
                 </Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => loginWithRedirect()}>Log in</Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => loginWithRedirect()}>Sign up</Button>
@@ -119,7 +119,9 @@ export default function MenuBar(props) {
         properButtons = (
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Button variant="text" style={{ color: 'white', padding: 20 }}>
-                    {findTeammatesLink}
+                    <Link to='/FindTeammates' style={{ textDecoration: 'none', color: 'white' }}>
+                        Find Teammates
+                    </Link>
                 </Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={handleProfileEditorOpen}>Profile</Button>
                 <Button variant="text" style={{ color: 'white', padding: 20 }} onClick={() => logout()}>Logout</Button>
@@ -168,7 +170,7 @@ export default function MenuBar(props) {
                                         color="inherit"
                                         onClick={handleMobileMenuOpen}
                                     >
-                                        <ExpandMoreIcon />
+                                        <MoreVertIcon />
                                     </IconButton>
                                 </Box>
                             </Grid>
