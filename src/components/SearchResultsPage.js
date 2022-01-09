@@ -17,7 +17,6 @@ export default function SearchResults(props) {
     const [skillFilters, setSkillFilters] = useState([]);
     const [interestFilters, setInterestFilters] = useState([]);
     const [needFilters, setNeedFilters] = useState([]);
-
     if (props.users != null) {
         if (props.users.length === 0) {
             return (<Typography variant="h4" align="center">No profiles to view! Sign in and be the first to create one!</Typography>)
@@ -98,6 +97,7 @@ export default function SearchResults(props) {
                         </List>
                     </Grid>
                 </Grid>
+                <br></br>
                 <FilteredSearchResults
                     users={props.users}
                     skillFilters={skillFilters}

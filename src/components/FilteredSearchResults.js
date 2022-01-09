@@ -9,7 +9,7 @@ function removeFromArray(item, array) {
 }
 
 
-function getFilteredUsers(users, skillFilters, interestFilters, needsFilters) {
+function getFilteredUsers(users, skillFilters, interestFilters, needFilters) {
     const filteredUsers = [...users];
     filteredUsers.forEach(user => {
         const userSkills = user['skills'];
@@ -24,9 +24,8 @@ function getFilteredUsers(users, skillFilters, interestFilters, needsFilters) {
                 removeFromArray(user, filteredUsers);
             }
         })
-        // TODO: fix promise error?
         const userNeeds = user['needs'];
-        needsFilters.forEach(filterNeed => {
+        needFilters.forEach(filterNeed => {
             if (userNeeds.indexOf(filterNeed) === -1) {
                 removeFromArray(user, filteredUsers);
             }
@@ -38,7 +37,7 @@ function getFilteredUsers(users, skillFilters, interestFilters, needsFilters) {
 export default function FilteredSearchResults(props) {
     return (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
-            {getFilteredUsers(props.users, props.skillFilters, props.interestFilters, props.needsFilters).map(user => {
+            {getFilteredUsers(props.users, props.skillFilters, props.interestFilters, props.needFilters).map(user => {
                 return (
                     <Grid item key={user['contact']} xs={12} sm={6} md={4} lg={3}>
                         <ProfileCard user={user} />
