@@ -58,8 +58,8 @@ export default class ProfileCreation extends React.Component {
                 </Dialog>
             )
         }
-        const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#']
-        const interests = ['Sustainability', 'Equality', 'Education', 'Finance', 'Gaming', 'Healthcare']
+        const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#'];
+        const interests = ['Poverty', 'Hunger', 'Health', 'Education', 'Gender Equality', 'Clean Water and Sanitation', 'Clean Energy', 'Sustainability', 'Ethical Economics'];
         return (
             <Dialog open={this.props.open} onClose={this.props.setClosed}>
                 <DialogTitle>Edit Profile</DialogTitle>
