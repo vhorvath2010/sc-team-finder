@@ -53,7 +53,7 @@ export default function MenuBar(props) {
     let properMobileButtons;
     let homeLink = (
         <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
-            Solutions Challenge Team Finder
+            Solution Challenge Team Finder
         </Link>
     )
     if (user == null) {

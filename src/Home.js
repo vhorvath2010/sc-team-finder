@@ -16,8 +16,8 @@ export default function Home() {
       <Grid container spacing={1} justifyContent="center" alignContent="center">
         <Grid item xs={false} lg={1}></Grid>
         <Grid item className="left-head" xs={12} lg={5}>
-          <h1>Find Solutions Challenge Teammates!</h1>
-          <p>Welcome to the Solutions Challenge Team Finder! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
+          <h1>Find Solution Challenge Teammates!</h1>
+          <p>Welcome to the Solution Challenge Team Finder! This website is made to help you find teammates for the Google Solution Challenge</p>
         </Grid>
         <Grid item className="right-head" xs={12} lg={5}>
           <img src={gdsc_img} alt="evironmental artwork"></img>
@@ -27,8 +27,8 @@ export default function Home() {
       <Grid style={{ paddingTop: 80 }} container spacing={1}>
       <Grid item xs={false} lg={1}></Grid>
         <Grid item className="left-desc" xs={12} lg={5}>
-          <h1>What is the Google Solutions Challenge?</h1>
-          <p>Explain this general idea + this year's focus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis diam sem, id scelerisque purus ullamcorper quis. Morbi pharetra odio est. Sed quis libero vestibulum, pharetra neque accumsan, mollis lorem. Maecenas semper eu est non placerat. Donec eget sapien ipsum. Phasellus imperdiet eros sem, eget vulputate massa mattis sit amet. Donec posuere dolor non elit vehicula, vel consectetur leo pretium. Donec varius turpis ac accumsan dapibus.</p>
+          <h1>What is the Google Solution Challenge?</h1>
+          <p>The Google Solution Challenge is the biggest event held by Google for DSC chapters across the globe. It is Google's semester-long Hackathon where participation is exclusive to DSC members. This is the perfect opportunity for students looking to explore Google Developer technologies with support and connections from Google mentors and engineers. GT DSC will provide check-ins and office hours twice a month to help teams develop quality projects. <strong>Top finalists will have the chance to fly out to Google's global conference to presetnt their ideas and receive prizes from GT DSC!</strong></p>
         </Grid>
         <Grid item className="right-desc" xs={12} lg={5}>
           <img src={sdg_img} alt="UN Sustainable Development Goals"></img>
