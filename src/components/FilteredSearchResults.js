@@ -11,25 +11,34 @@ function removeFromArray(item, array) {
 
 function getFilteredUsers(users, skillFilters, interestFilters, needFilters) {
     const filteredUsers = [...users];
+    const toRemove = new Set();
     filteredUsers.forEach(user => {
         const userSkills = user['skills'];
-        skillFilters.forEach(filterSkill => {
-            if (!userSkills.includes(filterSkill)) {
-                removeFromArray(user, filteredUsers);
+        skillFilters.forEach(filter => {
+            if (!userSkills.includes(filter)) {
+                toRemove.add(user);
             }
-        })
+        });
+    })
+    filteredUsers.forEach(user => {
         const userInterests = user['interests'];
-        interestFilters.forEach(filterInterest => {
-            if (!userInterests.includes(filterInterest)) {
-                removeFromArray(user, filteredUsers);
+        interestFilters.forEach(filter => {
+            if (!userInterests.includes(filter)) {
+                toRemove.add(user);
             }
-        })
+        });
+    })
+    filteredUsers.forEach(user => {
         const userNeeds = user['needs'];
-        needFilters.forEach(filterNeed => {
-            if (!userNeeds.includes(filterNeed)) {
-                removeFromArray(user, filteredUsers);
+        console.log(userNeeds);
+        needFilters.forEach(filter => {
+            if (!userNeeds.includes(filter)) {
+                toRemove.add(user);
             }
-        })
+        });
+    })
+    toRemove.forEach(user => {
+        removeFromArray(user, filteredUsers);
     })
     return filteredUsers;
 }
