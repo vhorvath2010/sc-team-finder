@@ -17,7 +17,7 @@ export default function Home() {
         <Grid item xs={false} lg={1}></Grid>
         <Grid item className="left-head" xs={12} lg={5}>
           <h1>Find Solution Challenge Teammates!</h1>
-          <p>Welcome to the Solution Challenge Team Finder! This website is made to help you find teammates for the Google Solution Challenge</p>
+          <p>Welcome to the Solution Challenge Team Finder! This website is made to help you find teammates for the Google Solution Challenge. Create a login in the menu above, enter your information using the "Profile" button, and find teammates under the "Find Teammates" button! You can filter your search results to match your specific skills, interests, and needs. Contact potential teammates using their contact info, and create your Solution Challenge team!</p>
         </Grid>
         <Grid item className="right-head" xs={12} lg={5}>
           <img src={gdsc_img} alt="evironmental artwork"></img>
