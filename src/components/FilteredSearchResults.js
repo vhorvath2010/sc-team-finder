@@ -14,19 +14,19 @@ function getFilteredUsers(users, skillFilters, interestFilters, needFilters) {
     filteredUsers.forEach(user => {
         const userSkills = user['skills'];
         skillFilters.forEach(filterSkill => {
-            if (userSkills.indexOf(filterSkill) === -1) {
+            if (!userSkills.includes(filterSkill)) {
                 removeFromArray(user, filteredUsers);
             }
         })
         const userInterests = user['interests'];
         interestFilters.forEach(filterInterest => {
-            if (userInterests.indexOf(filterInterest) === -1) {
+            if (!userInterests.includes(filterInterest)) {
                 removeFromArray(user, filteredUsers);
             }
         })
         const userNeeds = user['needs'];
         needFilters.forEach(filterNeed => {
-            if (userNeeds.indexOf(filterNeed) === -1) {
+            if (!userNeeds.includes(filterNeed)) {
                 removeFromArray(user, filteredUsers);
             }
         })
