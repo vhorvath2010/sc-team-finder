@@ -27,6 +27,7 @@ const newUsers = [];
 
 // Enter user into database with data
 export async function enterUserData(user, userData) {
+  removeIfNewUser(user);
   const userDoc = doc(db, 'users', user.sub);
   await setDoc(userDoc, userData);
   userDataMap.set(user.sub, userData);
