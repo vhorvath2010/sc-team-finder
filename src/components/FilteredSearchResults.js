@@ -30,7 +30,6 @@ function getFilteredUsers(users, skillFilters, interestFilters, needFilters) {
     })
     filteredUsers.forEach(user => {
         const userNeeds = user['needs'];
-        console.log(userNeeds);
         needFilters.forEach(filter => {
             if (!userNeeds.includes(filter)) {
                 toRemove.add(user);

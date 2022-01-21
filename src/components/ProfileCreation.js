@@ -33,7 +33,6 @@ export default class ProfileCreation extends React.Component {
         if (this.props.user != null) {
             this.setState({ loading: true })
             getUserData(this.props.user).then(data => {
-                console.log(data);
                 this.updateStateWithUserData(data);
                 this.setState({ loading: false })
             });
