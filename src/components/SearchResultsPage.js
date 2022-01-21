@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import FilteredSearchResults from "./FilteredSearchResults";
 
-const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#'];
+const skills = ['Web Dev', 'Machine Learning', 'Data Science', 'Mobile Apps', 'Python', 'Java', 'C#', 'Graphic Design'];
 const interests = ['Poverty', 'Hunger', 'Health', 'Education', 'Gender Equality', 'Clean Water and Sanitation', 'Clean Energy', 'Sustainability', 'Ethical Economics'];
 
 function removeFromArray(item, array) {
