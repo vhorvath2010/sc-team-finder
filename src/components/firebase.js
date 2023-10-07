@@ -7,7 +7,7 @@ import { getFirestore, doc, getDoc, setDoc, getDocs, collection } from 'firebase
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBvIARJtQcwLRbxhYVd-YzU7c4KMn9FrN4",
+  apiKey: "[REDACTED] and old key has been invalidated",
   authDomain: "gsc-team-finder.firebaseapp.com",
   databaseURL: "https://gsc-team-finder-default-rtdb.firebaseio.com",
   projectId: "gsc-team-finder",
